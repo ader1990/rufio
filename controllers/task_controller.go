@@ -119,7 +119,7 @@ func (r *TaskReconciler) reconcile(ctx context.Context, task *bmcv1alpha1.Task, 
 	if !task.Status.StartTime.IsZero() {
 		jobRunningTime := time.Since(task.Status.StartTime.Time)
 		// TODO(pokearu): add timeout for tasks on API spec
-		if jobRunningTime >= 3*time.Minute {
+		if jobRunningTime >= 60*time.Minute {
 			timeOutErr := fmt.Errorf("bmc task timeout: %d", jobRunningTime)
 			// Set Task Condition Failed True
 			task.SetCondition(bmcv1alpha1.TaskFailed, bmcv1alpha1.ConditionTrue, bmcv1alpha1.WithTaskConditionMessage(timeOutErr.Error()))
