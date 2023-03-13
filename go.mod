@@ -3,7 +3,7 @@ module github.com/tinkerbell/rufio
 go 1.18
 
 require (
-	github.com/bmc-toolbox/bmclib/v2 v2.0.1-0.20230212165211-bac64498b8ba
+	github.com/bmc-toolbox/bmclib/v2 v2.0.1-0.20230309142544-4d46ab246d57
 	github.com/go-logr/logr v1.2.3
 	github.com/go-logr/zapr v1.2.3
 	github.com/golang/mock v1.6.0
@@ -22,7 +22,7 @@ require (
 	github.com/VictorLowther/simplexml v0.0.0-20180716164440-0bff93621230 // indirect
 	github.com/VictorLowther/soap v0.0.0-20150314151524-8e36fca84b22 // indirect
 	github.com/beorn7/perks v1.0.1 // indirect
-	github.com/bmc-toolbox/common v0.0.0-20221115135648-0b584f504396 // indirect
+	github.com/bmc-toolbox/common v0.0.0-20230220061748-93ff001f4a1d // indirect
 	github.com/cespare/xxhash/v2 v2.1.2 // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/emicklei/go-restful/v3 v3.9.0 // indirect
@@ -43,6 +43,7 @@ require (
 	github.com/hashicorp/go-multierror v1.1.1 // indirect
 	github.com/imdario/mergo v0.3.12 // indirect
 	github.com/jacobweinstock/go-amt v0.0.0-20221125040441-53475f4ae023 // indirect
+	github.com/jacobweinstock/iamt v0.0.0-20230304043040-a6b4a1001123 // indirect
 	github.com/jacobweinstock/registrar v0.4.6 // indirect
 	github.com/jacobweinstock/wsman v0.0.0-20221125035617-2eae65734c77 // indirect
 	github.com/josharian/intern v1.0.0 // indirect
