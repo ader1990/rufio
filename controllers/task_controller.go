@@ -130,7 +130,7 @@ func (r *TaskReconciler) reconcile(ctx context.Context, task *bmcv1alpha1.Task, 
 			return ctrl.Result{}, timeOutErr
 		}
 
-		result, err := r.checkTaskStatus(ctx, task.Spec.Task, bmcClient)
+		result, err := r.checkTaskStatus(ctx, task.Spec.Task, bmcClient, logger)
 		if err != nil {
 			return result, fmt.Errorf("bmc task status check: %s", err)
 		}
@@ -196,15 +196,17 @@ func (r *TaskReconciler) runTask(ctx context.Context, task bmcv1alpha1.Action, b
 
 // checkTaskStatus checks if Task action completed.
 // This is currently limited only to a few PowerAction types.
-func (r *TaskReconciler) checkTaskStatus(ctx context.Context, task bmcv1alpha1.Action, bmcClient BMCClient) (ctrl.Result, error) {
+func (r *TaskReconciler) checkTaskStatus(ctx context.Context, task bmcv1alpha1.Action, bmcClient BMCClient, logger logr.Logger) (ctrl.Result, error) {
 	// TODO(pokearu): Extend to all actions.
 	if task.PowerAction != nil {
 		rawState, err := bmcClient.GetPowerState(ctx)
+		logger.Info(fmt.Sprint("Got RAW Power State:", rawState))
 		if err != nil {
 			return ctrl.Result{}, fmt.Errorf("failed to get power state: %v", err)
 		}
 
 		state, err := convertRawBMCPowerState(rawState)
+		logger.Info(fmt.Sprint("Got Power State:", state))
 		if err != nil {
 			return ctrl.Result{}, err
 		}
